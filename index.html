@@ -1,691 +1,801 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-  <title>Jadual PDPR 2026, SR AR RAUDHAH</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<title>Jadual PDPR 2026 | SR Ar Raudhah</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #f5f7fb;
-      color: #172033;
-    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f6fa;
+  color: #172033;
+}
 
-    .app {
-      width: 100%;
-      max-width: 760px;
-      margin: auto;
-      padding: 24px 16px 50px;
-    }
+/* =========================
+   HEADER
+========================= */
 
-    .header {
-      text-align: center;
-      padding: 28px 10px 22px;
-    }
+.header {
+  background: linear-gradient(135deg, #123c69, #1769aa);
+  color: white;
+  padding: 28px 18px 32px;
+  text-align: center;
+}
 
-    .logo {
-      width: 75px;
-      height: 75px;
-      object-fit: contain;
-      margin: 0 auto 15px;
-    }
+.header h1 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+}
 
-    .title {
-      font-size: clamp(22px, 5vw, 32px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin: 0;
-    }
+.header p {
+  margin: 7px 0 0;
+  font-size: 14px;
+  opacity: .9;
+}
 
-    .subtitle {
-      margin-top: 8px;
-      color: #64748b;
-      font-size: 14px;
-      font-weight: 600;
-    }
+/* =========================
+   MAIN
+========================= */
 
-    .selector-card {
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, .07);
-      margin-bottom: 20px;
-    }
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 22px 15px 50px;
+}
 
-    .selector-label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      color: #64748b;
-      margin-bottom: 8px;
-    }
+/* =========================
+   YEAR SELECTOR
+========================= */
 
-    select {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid #dbe2ea;
-      border-radius: 13px;
-      background: white;
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 700;
-      color: #172033;
-      outline: none;
-    }
+.selector-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.06);
+  margin-bottom: 20px;
+}
 
-    select:focus {
-      border-color: #2563eb;
-    }
+.selector-card label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
 
-    #content {
-      display: none;
-    }
+select {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid #d6dce5;
+  border-radius: 12px;
+  background: white;
+  font-size: 16px;
+  outline: none;
+}
 
-    .info-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, .07);
-      margin-bottom: 16px;
-    }
+select:focus {
+  border-color: #1769aa;
+}
 
-    .info-row {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      border-bottom: 1px solid #edf0f4;
-    }
+/* =========================
+   LOADING
+========================= */
 
-    .info-row:last-child {
-      border-bottom: 0;
-    }
+.loading {
+  text-align: center;
+  padding: 35px 10px;
+  color: #64748b;
+  display: none;
+}
 
-    .info-label {
-      padding: 14px;
-      background: #f8fafc;
-      font-size: 12px;
-      font-weight: 800;
-      color: #64748b;
-    }
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #dbe5ef;
+  border-top-color: #1769aa;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin: 0 auto 12px;
+}
 
-    .info-value {
-      padding: 14px;
-      font-size: 14px;
-      font-weight: 700;
-    }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-    .lesson-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, .07);
-      margin-bottom: 16px;
-    }
+/* =========================
+   DATE SECTION
+========================= */
 
-    .lesson-header {
-      padding: 15px 18px;
-      background: linear-gradient(135deg, #172554, #2563eb);
-      color: white;
-    }
+.day-card {
+  background: white;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
 
-    .lesson-title {
-      font-size: 14px;
-      font-weight: 800;
-      margin: 0;
-    }
+.day-header {
+  background: #eaf3fb;
+  padding: 16px 18px;
+  border-bottom: 1px solid #dbe7f1;
+}
 
-    .lesson-body {
-      padding: 18px;
-    }
+.day-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: #123c69;
+}
 
-    .subject-name {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
+.day-date {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 3px;
+}
 
-    .teacher-row {
-      margin-bottom: 14px;
-    }
+/* =========================
+   LESSON
+========================= */
 
-    .small-label {
-      font-size: 11px;
-      color: #64748b;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      margin-bottom: 4px;
-    }
+.lesson {
+  display: grid;
+  grid-template-columns: 145px 1fr auto;
+  gap: 15px;
+  align-items: center;
+  padding: 17px 18px;
+  border-bottom: 1px solid #edf0f3;
+}
 
-    .teacher {
-      font-size: 14px;
-      font-weight: 700;
-    }
+.lesson:last-child {
+  border-bottom: none;
+}
 
-    .meet-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      text-decoration: none;
-      padding: 14px;
-      border-radius: 13px;
-      background: #2563eb;
-      color: white;
-      font-size: 13px;
-      font-weight: 800;
-      transition: .2s;
-    }
+.time {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+}
 
-    .meet-btn:hover {
-      background: #1d4ed8;
-      transform: translateY(-1px);
-    }
+.subject {
+  font-size: 17px;
+  font-weight: 800;
+  color: #172033;
+}
 
-    .meet-btn.empty {
-      background: #e2e8f0;
-      color: #94a3b8;
-      pointer-events: none;
-    }
+.teacher {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+}
 
-    .loading {
-      text-align: center;
-      padding: 35px;
-      color: #64748b;
-      font-size: 14px;
-      font-weight: 700;
-    }
+/* =========================
+   MEET BUTTON
+========================= */
 
-    .spinner {
-      width: 28px;
-      height: 28px;
-      border: 3px solid #dbeafe;
-      border-top-color: #2563eb;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      margin: 0 auto 12px;
-    }
+.meet-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #1a73e8;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
+.meet-btn:hover {
+  background: #1558b0;
+}
 
-    .error {
-      display: none;
-      padding: 18px;
-      border-radius: 16px;
-      background: #fef2f2;
-      color: #b91c1c;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: center;
-    }
+.meet-btn svg {
+  width: 17px;
+  height: 17px;
+}
 
-    @media(max-width:500px) {
-      .app {
-        padding: 16px 12px 40px;
-      }
+/* =========================
+   EMPTY
+========================= */
 
-      .info-row {
-        grid-template-columns: 95px 1fr;
-      }
+.empty {
+  text-align: center;
+  padding: 45px 20px;
+  color: #64748b;
+  background: white;
+  border-radius: 18px;
+}
 
-      .info-label,
-      .info-value {
-        padding: 12px;
-      }
+/* =========================
+   ERROR
+========================= */
 
-      .subject-name {
-        font-size: 18px;
-      }
-    }
-  </style>
+.error {
+  display: none;
+  background: #fff1f2;
+  color: #be123c;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  .header h1 {
+    font-size: 23px;
+  }
+
+  .lesson {
+    grid-template-columns: 1fr auto;
+    gap: 8px 10px;
+  }
+
+  .time {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: #1769aa;
+  }
+
+  .subject {
+    font-size: 16px;
+  }
+
+  .meet-btn {
+    padding: 9px 11px;
+  }
+
+  .meet-text {
+    display: none;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="app">
+<!-- HEADER -->
 
-  <header class="header">
+<header class="header">
 
-    <!-- Optional logo -->
-    <img
-      class="logo"
-      src="https://raw.githubusercontent.com/julf95/classroom/main/Logo%20Raudhah.png"
-      alt="Logo SR Ar Raudhah"
-    >
+  <h1>Jadual PDPR 2026</h1>
 
-    <h1 class="title">
-      Jadual PDPR 2026
-    </h1>
+  <p>SR Ar Raudhah</p>
 
-    <div class="subtitle">
-      SR AR RAUDHAH
-    </div>
-
-  </header>
+</header>
 
 
-  <!-- YEAR SELECTOR -->
+<main class="container">
+
+  <!-- YEAR SELECT -->
+
   <div class="selector-card">
 
-    <label class="selector-label">
-      PILIH TAHUN
+    <label for="tahun">
+      Pilih Tahun
     </label>
 
-    <select id="tahunSelect">
-      <option value="">-- Pilih Tahun --</option>
-      <option value="1">TAHUN 1</option>
-      <option value="2">TAHUN 2</option>
-      <option value="3">TAHUN 3</option>
-      <option value="4">TAHUN 4</option>
-      <option value="5">TAHUN 5</option>
-      <option value="6">TAHUN 6</option>
+    <select id="tahun">
+
+      <option value="">
+        -- Pilih Tahun --
+      </option>
+
+      <option value="1">
+        Tahun 1
+      </option>
+
+      <option value="2">
+        Tahun 2
+      </option>
+
+      <option value="3">
+        Tahun 3
+      </option>
+
+      <option value="4">
+        Tahun 4
+      </option>
+
+      <option value="5">
+        Tahun 5
+      </option>
+
     </select>
 
   </div>
 
 
-  <!-- LOADING -->
-  <div id="loading" class="loading" style="display:none;">
-    <div class="spinner"></div>
-    Memuatkan jadual...
-  </div>
-
-
   <!-- ERROR -->
+
   <div id="error" class="error"></div>
 
 
-  <!-- CONTENT -->
-  <div id="content">
+  <!-- LOADING -->
 
-    <!-- KELAS / HARI / TARIKH -->
-    <div class="info-card">
+  <div id="loading" class="loading">
 
-      <div class="info-row">
-        <div class="info-label">KELAS</div>
-        <div class="info-value" id="kelas"></div>
-      </div>
+    <div class="spinner"></div>
 
-      <div class="info-row">
-        <div class="info-label">HARI</div>
-        <div class="info-value" id="hari"></div>
-      </div>
-
-      <div class="info-row">
-        <div class="info-label">TARIKH</div>
-        <div class="info-value" id="tarikh"></div>
-      </div>
-
-    </div>
-
-
-    <!-- MATHURAT -->
-    <div class="lesson-card">
-
-      <div class="lesson-header">
-        <p class="lesson-title">
-          SESI MATHURAT (7.00–7.20am)
-        </p>
-      </div>
-
-      <div class="lesson-body">
-
-        <div class="subject-name">
-          Mathurat
-        </div>
-
-        <div class="teacher-row">
-          <div class="small-label">GURU</div>
-          <div class="teacher" id="mathuratGuru"></div>
-        </div>
-
-        <a id="mathuratLink"
-           class="meet-btn"
-           target="_blank"
-           rel="noopener noreferrer">
-          JOIN GOOGLE MEET
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- SUBJECT 1 -->
-    <div class="lesson-card">
-
-      <div class="lesson-header">
-        <p class="lesson-title">
-          SUBJEK 1 (7.40–8.40am)
-        </p>
-      </div>
-
-      <div class="lesson-body">
-
-        <div class="subject-name" id="subjek1"></div>
-
-        <div class="teacher-row">
-          <div class="small-label">GURU</div>
-          <div class="teacher" id="guru1"></div>
-        </div>
-
-        <a id="link1"
-           class="meet-btn"
-           target="_blank"
-           rel="noopener noreferrer">
-          JOIN GOOGLE MEET
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- SUBJECT 2 -->
-    <div class="lesson-card">
-
-      <div class="lesson-header">
-        <p class="lesson-title">
-          SUBJEK 2 (8.45–9.45am)
-        </p>
-      </div>
-
-      <div class="lesson-body">
-
-        <div class="subject-name" id="subjek2"></div>
-
-        <div class="teacher-row">
-          <div class="small-label">GURU</div>
-          <div class="teacher" id="guru2"></div>
-        </div>
-
-        <a id="link2"
-           class="meet-btn"
-           target="_blank"
-           rel="noopener noreferrer">
-          JOIN GOOGLE MEET
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- SUBJECT 3 -->
-    <div class="lesson-card">
-
-      <div class="lesson-header">
-        <p class="lesson-title">
-          SUBJEK 3 (9.50–10.50am)
-        </p>
-      </div>
-
-      <div class="lesson-body">
-
-        <div class="subject-name" id="subjek3"></div>
-
-        <div class="teacher-row">
-          <div class="small-label">GURU</div>
-          <div class="teacher" id="guru3"></div>
-        </div>
-
-        <a id="link3"
-           class="meet-btn"
-           target="_blank"
-           rel="noopener noreferrer">
-          JOIN GOOGLE MEET
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- SUBJECT 4 -->
-    <div class="lesson-card">
-
-      <div class="lesson-header">
-        <p class="lesson-title">
-          SUBJEK 4 (10.55–11.55am)
-        </p>
-      </div>
-
-      <div class="lesson-body">
-
-        <div class="subject-name" id="subjek4"></div>
-
-        <div class="teacher-row">
-          <div class="small-label">GURU</div>
-          <div class="teacher" id="guru4"></div>
-        </div>
-
-        <a id="link4"
-           class="meet-btn"
-           target="_blank"
-           rel="noopener noreferrer">
-          JOIN GOOGLE MEET
-        </a>
-
-      </div>
-
-    </div>
+    <div>Memuatkan jadual...</div>
 
   </div>
 
-</div>
+
+  <!-- RESULT -->
+
+  <div id="schedule"></div>
+
+</main>
 
 
 <script>
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbywivX93mBgSGxm_kqx5RQnPPDPclZowOFp_Q-vxZkh_CTU_rQNmqYNdlo-tsysyCeIVQ/exec';
+/* ==========================================
+   GOOGLE APPS SCRIPT URL
+========================================== */
+
+const API_URL =
+  'https://script.google.com/macros/s/AKfycbywivX93mBgSGxm_kqx5RQnPPDPclZowOFp_Q-vxZkh_CTU_rQNmqYNdlo-tsysyCeIVQ/exec';
 
 
-const tahunSelect = document.getElementById('tahunSelect');
-const content = document.getElementById('content');
-const loading = document.getElementById('loading');
-const errorBox = document.getElementById('error');
+/* ==========================================
+   CACHE
+========================================== */
+
+let allData = null;
 
 
-tahunSelect.addEventListener('change', function() {
+/* ==========================================
+   INITIAL LOAD
+========================================== */
 
-  const tahun = this.value;
+document.addEventListener('DOMContentLoaded', function() {
 
-  if (!tahun) {
-    content.style.display = 'none';
-    errorBox.style.display = 'none';
-    return;
-  }
-
-  loadJadual(tahun);
+  loadData();
 
 });
 
 
-function loadJadual(tahun) {
+/* ==========================================
+   YEAR CHANGE
+========================================== */
 
-  content.style.display = 'none';
-  errorBox.style.display = 'none';
-  loading.style.display = 'block';
+document
+  .getElementById('tahun')
+  .addEventListener('change', function() {
 
-  const oldScript = document.getElementById('jsonpScript');
+    const year = this.value;
 
-  if (oldScript) {
-    oldScript.remove();
-  }
+    if (!year) {
 
-  const script = document.createElement('script');
+      document
+        .getElementById('schedule')
+        .innerHTML = '';
 
-  script.id = 'jsonpScript';
+      return;
+
+    }
+
+    showYear(year);
+
+  });
+
+
+/* ==========================================
+   LOAD DATA
+========================================== */
+
+function loadData() {
+
+  showLoading(true);
 
   const callbackName =
-    'jadualCallback_' + Date.now();
+    'pdprCallback_' + Date.now();
 
   window[callbackName] = function(response) {
 
-    loading.style.display = 'none';
+    try {
 
-    if (!response.success) {
+      if (!response.success) {
 
-      showError(
-        response.message || 'Gagal memuatkan jadual.'
+        showError(response.error);
+        return;
+
+      }
+
+      allData = response.data;
+
+      console.log(
+        'PDPR data loaded:',
+        allData.length,
+        'rows'
       );
 
-      return;
+    } catch (error) {
+
+      showError(error.message);
+
+    } finally {
+
+      showLoading(false);
+
+      delete window[callbackName];
+
+      const script =
+        document.getElementById(callbackName);
+
+      if (script) {
+        script.remove();
+      }
+
     }
 
-    displayData(response.data);
-
-    delete window[callbackName];
-
-    script.remove();
   };
 
 
-  script.onerror = function() {
+  const script =
+    document.createElement('script');
 
-    loading.style.display = 'none';
-
-    showError(
-      'Tidak dapat memuatkan jadual. Sila cuba lagi.'
-    );
-
-    delete window[callbackName];
-
-    script.remove();
-  };
-
+  script.id = callbackName;
 
   script.src =
     API_URL +
-    '?tahun=' +
-    encodeURIComponent(tahun) +
-    '&callback=' +
+    '?callback=' +
     callbackName;
+
+  script.onerror = function() {
+
+    showError(
+      'Gagal menyambung ke sistem jadual.'
+    );
+
+    showLoading(false);
+
+  };
 
   document.body.appendChild(script);
 
 }
 
 
-function displayData(data) {
+/* ==========================================
+   SHOW YEAR
+========================================== */
 
-  document.getElementById('kelas').textContent =
-    data.kelas || '-';
+function showYear(year) {
 
-  document.getElementById('hari').textContent =
-    data.hari || '-';
+  if (!allData) {
 
-  document.getElementById('tarikh').textContent =
-    data.tarikh || '-';
+    showError(
+      'Data belum selesai dimuatkan.'
+    );
 
-
-  document.getElementById('mathuratGuru').textContent =
-    data.mathurat.guru || '-';
-
-  setMeetLink(
-    document.getElementById('mathuratLink'),
-    data.mathurat.link
-  );
-
-
-  setSubject(
-    'subjek1',
-    'guru1',
-    'link1',
-    data.subjek1
-  );
-
-  setSubject(
-    'subjek2',
-    'guru2',
-    'link2',
-    data.subjek2
-  );
-
-  setSubject(
-    'subjek3',
-    'guru3',
-    'link3',
-    data.subjek3
-  );
-
-  setSubject(
-    'subjek4',
-    'guru4',
-    'link4',
-    data.subjek4
-  );
-
-
-  content.style.display = 'block';
-
-}
-
-
-function setSubject(
-  subjectId,
-  teacherId,
-  linkId,
-  data
-) {
-
-  document.getElementById(subjectId).textContent =
-    data.subjek || '-';
-
-  document.getElementById(teacherId).textContent =
-    data.guru || '-';
-
-  setMeetLink(
-    document.getElementById(linkId),
-    data.link
-  );
-
-}
-
-
-function setMeetLink(element, link) {
-
-  if (link && link.trim() !== '') {
-
-    element.href = link.trim();
-
-    element.classList.remove('empty');
-
-    element.textContent = 'JOIN GOOGLE MEET';
-
-  } else {
-
-    element.removeAttribute('href');
-
-    element.classList.add('empty');
-
-    element.textContent = 'GOOGLE MEET BELUM DITETAPKAN';
+    return;
 
   }
 
+  const rows = allData.slice(2)
+    .filter(function(row) {
+
+      return String(row[0]).trim() ===
+             String(year).trim();
+
+    });
+
+
+  const container =
+    document.getElementById('schedule');
+
+
+  if (!rows.length) {
+
+    container.innerHTML = `
+      <div class="empty">
+        Tiada jadual untuk Tahun ${year}.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  let html = '';
+
+  rows.forEach(function(row) {
+
+    const hari =
+      row[1] || '';
+
+    const tarikh =
+      row[2] || '';
+
+
+    html += `
+
+      <section class="day-card">
+
+        <div class="day-header">
+
+          <div class="day-name">
+            ${escapeHTML(hari)}
+          </div>
+
+          <div class="day-date">
+            ${escapeHTML(tarikh)}
+          </div>
+
+        </div>
+
+    `;
+
+
+    /*
+      MATHURAT
+      D = 3
+      E = 4
+    */
+
+    html += lessonHTML(
+      '7.00 - 7.20',
+      'MATHURAT',
+      row[3],
+      row[4]
+    );
+
+
+    /*
+      SUBJECT 1
+      F = 5
+      G = 6
+      H = 7
+    */
+
+    html += lessonHTML(
+      '7.40 - 8.30',
+      row[5],
+      row[6],
+      row[7]
+    );
+
+
+    /*
+      SUBJECT 2
+      I = 8
+      J = 9
+      K = 10
+    */
+
+    html += lessonHTML(
+      '8.40 - 9.30',
+      row[8],
+      row[9],
+      row[10]
+    );
+
+
+    /*
+      SUBJECT 3
+      L = 11
+      M = 12
+      N = 13
+    */
+
+    html += lessonHTML(
+      '9.40 - 10.30',
+      row[11],
+      row[12],
+      row[13]
+    );
+
+
+    /*
+      SUBJECT 4
+      O = 14
+      P = 15
+      Q = 16
+    */
+
+    html += lessonHTML(
+      '10.40 - 11.30',
+      row[14],
+      row[15],
+      row[16]
+    );
+
+
+    html += `</section>`;
+
+  });
+
+
+  container.innerHTML = html;
+
 }
 
 
+/* ==========================================
+   LESSON HTML
+========================================== */
+
+function lessonHTML(
+  time,
+  subject,
+  teacher,
+  link
+) {
+
+  subject =
+    String(subject || '').trim();
+
+  teacher =
+    String(teacher || '').trim();
+
+  link =
+    String(link || '').trim();
+
+
+  // Don't display completely empty lesson
+  if (!subject && !teacher && !link) {
+    return '';
+  }
+
+
+  let meetButton = '';
+
+
+  if (link) {
+
+    meetButton = `
+
+      <a
+        class="meet-btn"
+        href="${safeURL(link)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+
+          <rect
+            x="3"
+            y="5"
+            width="13"
+            height="14"
+            rx="2"
+          ></rect>
+
+          <path
+            d="M16 10l5-3v10l-5-3z"
+          ></path>
+
+        </svg>
+
+        <span class="meet-text">
+          Google Meet
+        </span>
+
+      </a>
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="lesson">
+
+      <div class="time">
+        ${escapeHTML(time)}
+      </div>
+
+      <div>
+
+        <div class="subject">
+          ${escapeHTML(subject || '-')}
+        </div>
+
+        <div class="teacher">
+          ${escapeHTML(teacher || '-')}
+        </div>
+
+      </div>
+
+      ${meetButton}
+
+    </div>
+
+  `;
+
+}
+
+
+/* ==========================================
+   LOADING
+========================================== */
+
+function showLoading(show) {
+
+  document
+    .getElementById('loading')
+    .style.display =
+      show ? 'block' : 'none';
+
+}
+
+
+/* ==========================================
+   ERROR
+========================================== */
+
 function showError(message) {
 
-  errorBox.textContent = message;
+  const el =
+    document.getElementById('error');
 
-  errorBox.style.display = 'block';
+  el.textContent =
+    message;
+
+  el.style.display =
+    'block';
+
+}
+
+
+/* ==========================================
+   SECURITY
+========================================== */
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+}
+
+
+function safeURL(url) {
+
+  const value =
+    String(url).trim();
+
+  if (
+    value.startsWith('https://meet.google.com/')
+  ) {
+
+    return escapeHTML(value);
+
+  }
+
+  return '#';
 
 }
 
