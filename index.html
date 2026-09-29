@@ -303,10 +303,116 @@
         font-size: 18px;
       }
     }
+    
+    /* =========================
+       INTRO SCREEN
+    ========================= */
+    
+    #introScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+    
+      background: #e5e7eb;
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    
+      opacity: 1;
+    
+      animation: introScreenFade 3s ease forwards;
+    
+      pointer-events: all;
+    }
+    
+    #introLogo {
+      width: 190px;
+      height: 190px;
+    
+      object-fit: contain;
+    
+      opacity: 0;
+    
+      transform: scale(0.65) translateY(25px);
+    
+      filter: drop-shadow(
+        0 8px 20px rgba(0, 0, 0, 0.15)
+      );
+    
+      animation: introLogoEnter 1.2s cubic-bezier(
+        0.16,
+        1,
+        0.3,
+        1
+      ) 0.15s forwards;
+    }
+    
+    
+    /* Logo enters smoothly */
+    
+    @keyframes introLogoEnter {
+    
+      0% {
+        opacity: 0;
+        transform: scale(0.65) translateY(25px);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    
+    }
+    
+    
+    /* Whole intro disappears */
+    
+    @keyframes introScreenFade {
+    
+      0% {
+        opacity: 1;
+      }
+    
+      65% {
+        opacity: 1;
+      }
+    
+      100% {
+        opacity: 0;
+        pointer-events: none;
+      }
+    
+    }
+    
+    
+    /* Completely remove overlay after animation */
+    
+    #introScreen {
+      animation:
+        introScreenFade 3s ease forwards,
+        introRemove 0s linear 3s forwards;
+    }
+    
+    @keyframes introRemove {
+    
+      to {
+        visibility: hidden;
+      }
+    
+    }
   </style>
 </head>
 
 <body>
+
+<div id="introScreen">
+  <img
+    src="https://raw.githubusercontent.com/julf95/classroom/main/Logo%20Raudhah.png"
+    alt="SR Ar Raudhah"
+    id="introLogo"
+  >
+</div>
 
 <div class="container">
 
