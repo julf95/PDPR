@@ -401,6 +401,387 @@
       }
     
     }
+    
+    /* =====================================================
+       ADMIN BUTTON
+    ===================================================== */
+    
+    #adminButton {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9000;
+    
+      border: none;
+      border-radius: 12px;
+    
+      padding: 10px 14px;
+    
+      background: rgba(255,255,255,.95);
+      color: #172033;
+    
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+    
+      box-shadow:
+        0 5px 20px rgba(0,0,0,.12);
+    
+      cursor: pointer;
+    
+      transition: .2s ease;
+    }
+    
+    #adminButton:hover {
+      transform: translateY(-1px);
+    }
+    
+    
+    /* =====================================================
+       ADMIN PANEL
+    ===================================================== */
+    
+    #adminPanel {
+      display: none;
+    
+      position: fixed;
+      inset: 0;
+    
+      z-index: 10000;
+    
+      overflow-y: auto;
+    
+      background:
+        linear-gradient(
+          180deg,
+          #f8fafc,
+          #eef2f7
+        );
+    
+      padding: 20px;
+    
+      animation: adminIn .2s ease;
+    }
+    
+    @keyframes adminIn {
+    
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    
+    }
+    
+    
+    .admin-header {
+      width: min(100%, 720px);
+      margin: 0 auto 20px;
+    
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    
+      padding: 18px;
+    
+      border-radius: 18px;
+    
+      color: white;
+    
+      background:
+        linear-gradient(
+          120deg,
+          #172554,
+          #1d4ed8,
+          #4f46e5
+        );
+    
+      box-shadow:
+        0 10px 30px rgba(30,64,175,.20);
+    }
+    
+    .admin-title {
+      font-size: 19px;
+      font-weight: 800;
+    }
+    
+    .admin-subtitle {
+      margin-top: 4px;
+      font-size: 11px;
+      opacity: .8;
+    }
+    
+    .admin-close {
+      width: 38px;
+      height: 38px;
+    
+      border: none;
+      border-radius: 10px;
+    
+      background: rgba(255,255,255,.15);
+      color: white;
+    
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    
+    /* YEAR BUTTONS */
+    
+    .admin-years {
+      width: min(100%, 720px);
+      margin: 0 auto 15px;
+    
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    
+    .admin-years button {
+      border: none;
+      border-radius: 12px;
+    
+      padding: 13px 5px;
+    
+      background: white;
+      color: #1e293b;
+    
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+    
+      box-shadow:
+        0 4px 15px rgba(20,40,70,.08);
+    
+      cursor: pointer;
+    }
+    
+    .admin-years button:hover {
+      background: #2563eb;
+      color: white;
+    }
+    
+    
+    /* EDITOR */
+    
+    #adminEditor {
+      width: min(100%, 720px);
+      margin: auto;
+    }
+    
+    .admin-edit-title {
+      margin-bottom: 12px;
+    
+      font-size: 20px;
+      font-weight: 800;
+      color: #172033;
+    }
+    
+    
+    /* ADMIN SECTION */
+    
+    .admin-section {
+      background: white;
+    
+      border: 1px solid #e1e7ef;
+    
+      border-radius: 18px;
+    
+      padding: 17px;
+    
+      margin-bottom: 13px;
+    
+      box-shadow:
+        0 6px 20px rgba(20,40,70,.06);
+    }
+    
+    .admin-section.mathurat-admin {
+      border-left: 5px solid #16a34a;
+    }
+    
+    .admin-section-title {
+      margin-bottom: 15px;
+    
+      font-size: 14px;
+      font-weight: 800;
+    
+      color: #172033;
+    }
+    
+    .admin-section label {
+      display: block;
+    
+      margin:
+        10px 0 6px;
+    
+      font-size: 11px;
+      font-weight: 700;
+    
+      color: #64748b;
+    }
+    
+    .admin-section input {
+      width: 100%;
+    
+      height: 46px;
+    
+      padding: 0 13px;
+    
+      border:
+        1px solid #d8e0e8;
+    
+      border-radius: 11px;
+    
+      background: #f8fafc;
+    
+      color: #172033;
+    
+      font-family: inherit;
+      font-size: 13px;
+    
+      outline: none;
+    }
+    
+    .admin-section input:focus {
+      background: white;
+      border-color: #2563eb;
+    }
+    
+    
+    /* ACTIONS */
+    
+    .admin-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    
+      margin-top: 5px;
+      padding-bottom: 30px;
+    }
+    
+    .admin-actions button {
+      min-height: 48px;
+    
+      border: none;
+      border-radius: 13px;
+    
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+    
+      cursor: pointer;
+    }
+    
+    .save-admin {
+      background: #16a34a;
+      color: white;
+    }
+    
+    .delete-admin {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    
+    .save-admin:hover,
+    .delete-admin:hover {
+      opacity: .9;
+    }
+    
+    
+    @media (max-width: 480px) {
+    
+      #adminButton {
+        top: 10px;
+        right: 10px;
+      }
+    
+      .admin-years {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    
+      .admin-actions {
+        grid-template-columns: 1fr;
+      }
+    
+    }
+    
+    /* =====================================================
+       ADMIN SAVING OVERLAY
+    ===================================================== */
+    
+    #adminSavingOverlay {
+      display: none;
+    
+      position: fixed;
+      inset: 0;
+    
+      z-index: 999999;
+    
+      align-items: center;
+      justify-content: center;
+    
+      background: rgba(15, 23, 42, 0.55);
+    
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+    
+    .saving-card {
+      width: min(88%, 320px);
+    
+      padding: 28px 22px;
+    
+      text-align: center;
+    
+      background: white;
+    
+      border-radius: 20px;
+    
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, .25);
+    }
+    
+    .saving-spinner {
+      width: 42px;
+      height: 42px;
+    
+      margin: 0 auto 16px;
+    
+      border: 4px solid #dbeafe;
+      border-top-color: #2563eb;
+    
+      border-radius: 50%;
+    
+      animation:
+        savingSpin .75s linear infinite;
+    }
+    
+    @keyframes savingSpin {
+    
+      to {
+        transform: rotate(360deg);
+      }
+    
+    }
+    
+    .saving-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #172033;
+    }
+    
+    .saving-text {
+      margin-top: 6px;
+    
+      font-size: 11px;
+      font-weight: 500;
+    
+      color: #64748b;
+    }
   </style>
 </head>
 
@@ -415,6 +796,234 @@
 </div>
 
 <div class="container">
+    
+    <button id="adminButton" onclick="openAdmin()">
+      ⚙️ Admin
+    </button>
+    
+    <div id="adminPanel">
+    
+      <div class="admin-header">
+        <div>
+          <div class="admin-title">⚙️ Panel Admin</div>
+          <div class="admin-subtitle">
+            Pengurusan Jadual PDPR
+          </div>
+        </div>
+    
+        <button class="admin-close" onclick="closeAdmin()">
+          ✕
+        </button>
+      </div>
+    
+    
+      <!-- TAHUN BUTTONS -->
+    
+      <div class="admin-years">
+    
+        <button onclick="editTahun('1')">Tahun 1</button>
+        <button onclick="editTahun('2')">Tahun 2</button>
+        <button onclick="editTahun('3')">Tahun 3</button>
+        <button onclick="editTahun('4')">Tahun 4</button>
+        <button onclick="editTahun('5')">Tahun 5</button>
+    
+      </div>
+    
+    
+      <!-- EDITOR -->
+    
+      <div id="adminEditor" style="display:none;">
+    
+        <div class="admin-edit-title" id="adminEditTitle">
+          Tahun 1
+        </div>
+    
+    
+        <!-- MATHURAT -->
+    
+        <div class="admin-section mathurat-admin">
+    
+          <div class="admin-section-title">
+            ☀️ Mathurat
+          </div>
+    
+          <label>Guru Mathurat</label>
+    
+          <input
+            id="editMathuratGuru"
+            type="text"
+            placeholder="Nama guru"
+          >
+    
+          <label>Link Mathurat</label>
+    
+          <input
+            id="editMathuratLink"
+            type="url"
+            placeholder="https://..."
+          >
+    
+        </div>
+    
+    
+        <!-- SUBJEK 1 -->
+    
+        <div class="admin-section">
+    
+          <div class="admin-section-title">
+            📚 Subjek 1
+          </div>
+    
+          <label>Subjek</label>
+    
+          <input
+            id="editSubjek1"
+            type="text"
+            placeholder="Nama subjek"
+          >
+    
+          <label>Guru</label>
+    
+          <input
+            id="editGuru1"
+            type="text"
+            placeholder="Nama guru"
+          >
+    
+          <label>Link</label>
+    
+          <input
+            id="editLink1"
+            type="url"
+            placeholder="https://..."
+          >
+    
+        </div>
+    
+    
+        <!-- SUBJEK 2 -->
+    
+        <div class="admin-section">
+    
+          <div class="admin-section-title">
+            📚 Subjek 2
+          </div>
+    
+          <label>Subjek</label>
+    
+          <input
+            id="editSubjek2"
+            type="text"
+            placeholder="Nama subjek"
+          >
+    
+          <label>Guru</label>
+    
+          <input
+            id="editGuru2"
+            type="text"
+            placeholder="Nama guru"
+          >
+    
+          <label>Link</label>
+    
+          <input
+            id="editLink2"
+            type="url"
+            placeholder="https://..."
+          >
+    
+        </div>
+    
+    
+        <!-- SUBJEK 3 -->
+    
+        <div class="admin-section">
+    
+          <div class="admin-section-title">
+            📚 Subjek 3
+          </div>
+    
+          <label>Subjek</label>
+    
+          <input
+            id="editSubjek3"
+            type="text"
+            placeholder="Nama subjek"
+          >
+    
+          <label>Guru</label>
+    
+          <input
+            id="editGuru3"
+            type="text"
+            placeholder="Nama guru"
+          >
+    
+          <label>Link</label>
+    
+          <input
+            id="editLink3"
+            type="url"
+            placeholder="https://..."
+          >
+    
+        </div>
+    
+    
+        <!-- SUBJEK 4 -->
+    
+        <div class="admin-section">
+    
+          <div class="admin-section-title">
+            📚 Subjek 4
+          </div>
+    
+          <label>Subjek</label>
+    
+          <input
+            id="editSubjek4"
+            type="text"
+            placeholder="Nama subjek"
+          >
+    
+          <label>Guru</label>
+    
+          <input
+            id="editGuru4"
+            type="text"
+            placeholder="Nama guru"
+          >
+    
+          <label>Link</label>
+    
+          <input
+            id="editLink4"
+            type="url"
+            placeholder="https://..."
+          >
+    
+        </div>
+    
+    
+        <!-- ACTIONS -->
+    
+        <div class="admin-actions">
+    
+          <button
+            class="save-admin"
+            onclick="saveAdmin()"
+          >
+            💾 Simpan
+          </button>
+    
+          
+    
+        </div>
+    
+      </div>
+    
+    </div>
 
   <header class="header">
 
@@ -688,6 +1297,500 @@
   // ==========================================
 
   let allData = [];
+  
+  // =====================================================
+    // ADMIN
+    // =====================================================
+    
+    let adminUnlocked = false;
+    let currentAdminTahun = "";
+    
+    
+    // =====================================================
+    // OPEN ADMIN
+    // =====================================================
+    
+    function openAdmin() {
+    
+      // Already authenticated in this tab
+      if (adminUnlocked) {
+    
+        document.getElementById("adminPanel").style.display =
+          "block";
+    
+        return;
+      }
+    
+    
+      const password = prompt(
+        "Masukkan kata laluan Admin:"
+      );
+    
+    
+      if (password === "seriar26") {
+    
+        adminUnlocked = true;
+    
+        document.getElementById("adminPanel").style.display =
+          "block";
+    
+        alert("Akses Admin berjaya.");
+    
+      } else if (password !== null) {
+    
+        alert("Kata laluan salah.");
+    
+      }
+    
+    }
+    
+    
+    // =====================================================
+    // CLOSE ADMIN
+    // =====================================================
+    
+    function closeAdmin() {
+    
+      document.getElementById("adminPanel").style.display =
+        "none";
+    
+    }
+    
+    
+    // =====================================================
+    // EDIT TAHUN
+    // =====================================================
+    
+    function editTahun(tahun) {
+    
+      currentAdminTahun = tahun;
+    
+      const row = allData.find(
+        item =>
+          String(item.tahun).trim() === tahun
+      );
+    
+    
+      document.getElementById("adminEditor").style.display =
+        "block";
+    
+    
+      document.getElementById("adminEditTitle").textContent =
+        "Edit Tahun " + tahun;
+    
+    
+      // ================================================
+      // CLEAR / DEFAULT
+      // ================================================
+    
+      document.getElementById("editMathuratGuru").value =
+        row?.mathurat?.guru || "";
+    
+      document.getElementById("editMathuratLink").value =
+        row?.mathurat?.link || "";
+    
+    
+      for (let i = 1; i <= 4; i++) {
+    
+        document.getElementById(
+          "editSubjek" + i
+        ).value =
+          row?.["subjek" + i]?.subjek || "";
+    
+        document.getElementById(
+          "editGuru" + i
+        ).value =
+          row?.["subjek" + i]?.guru || "";
+    
+        document.getElementById(
+          "editLink" + i
+        ).value =
+          row?.["subjek" + i]?.link || "";
+    
+      }
+    
+    
+      // Scroll to editor
+      document.getElementById("adminEditor")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+    
+    }
+    
+    
+    function showSaving() {
+    
+      const overlay =
+        document.getElementById(
+          "adminSavingOverlay"
+        );
+    
+      overlay.style.display = "flex";
+    
+    }
+    
+    
+    function hideSaving() {
+    
+      const overlay =
+        document.getElementById(
+          "adminSavingOverlay"
+        );
+    
+      overlay.style.display = "none";
+    
+    }
+    
+    // =====================================================
+    // SAVE ADMIN
+    // =====================================================
+    
+    function saveAdmin() {
+    
+      if (!adminUnlocked) {
+    
+        alert("Akses Admin diperlukan.");
+    
+        return;
+    
+      }
+    
+    
+      if (!currentAdminTahun) {
+    
+        alert("Sila pilih Tahun dahulu.");
+    
+        return;
+    
+      }
+    
+    
+      const data = {
+    
+        tahun: currentAdminTahun,
+    
+        mathurat: {
+    
+          guru:
+            document.getElementById(
+              "editMathuratGuru"
+            ).value.trim(),
+    
+          link:
+            document.getElementById(
+              "editMathuratLink"
+            ).value.trim()
+    
+        },
+    
+        subjek1: {
+    
+          subjek:
+            document.getElementById(
+              "editSubjek1"
+            ).value.trim(),
+    
+          guru:
+            document.getElementById(
+              "editGuru1"
+            ).value.trim(),
+    
+          link:
+            document.getElementById(
+              "editLink1"
+            ).value.trim()
+    
+        },
+    
+        subjek2: {
+    
+          subjek:
+            document.getElementById(
+              "editSubjek2"
+            ).value.trim(),
+    
+          guru:
+            document.getElementById(
+              "editGuru2"
+            ).value.trim(),
+    
+          link:
+            document.getElementById(
+              "editLink2"
+            ).value.trim()
+    
+        },
+    
+        subjek3: {
+    
+          subjek:
+            document.getElementById(
+              "editSubjek3"
+            ).value.trim(),
+    
+          guru:
+            document.getElementById(
+              "editGuru3"
+            ).value.trim(),
+    
+          link:
+            document.getElementById(
+              "editLink3"
+            ).value.trim()
+    
+        },
+    
+        subjek4: {
+    
+          subjek:
+            document.getElementById(
+              "editSubjek4"
+            ).value.trim(),
+    
+          guru:
+            document.getElementById(
+              "editGuru4"
+            ).value.trim(),
+    
+          link:
+            document.getElementById(
+              "editLink4"
+            ).value.trim()
+    
+        }
+    
+      };
+    
+    
+      showSaving();
+      
+      const callbackName =
+        "adminSave_" + Date.now();
+    
+    
+      const script =
+        document.createElement("script");
+    
+    
+      window[callbackName] = function(result) {
+          
+          hideSaving();
+    
+        if (result.success) {
+    
+          // Update browser data immediately
+          const existingIndex =
+            allData.findIndex(
+              item =>
+                String(item.tahun).trim() ===
+                currentAdminTahun
+            );
+    
+    
+          if (existingIndex >= 0) {
+    
+            allData[existingIndex] = data;
+    
+          } else {
+    
+            allData.push(data);
+    
+          }
+    
+    
+          // Update public screen if this year
+          // is currently selected
+          const selected =
+            document.getElementById(
+              "tahunSelect"
+            ).value;
+    
+          if (selected === currentAdminTahun) {
+    
+            showTahun();
+    
+          }
+    
+    
+          alert(
+            "✅ " +
+            result.message
+          );
+    
+        } else {
+    
+          alert(
+            "❌ " +
+            (result.message ||
+              "Gagal menyimpan.")
+          );
+    
+        }
+    
+    
+        script.remove();
+    
+        delete window[callbackName];
+    
+      };
+    
+    
+      script.onerror = function() {
+
+      hideSaving();
+    
+      alert(
+        "❌ Gagal berhubung dengan Google Sheets."
+      );
+    
+        script.remove();
+    
+        delete window[callbackName];
+    
+      };
+    
+    
+      script.src =
+        API_URL +
+        "?action=save" +
+        "&password=" +
+        encodeURIComponent("seriar26") +
+        "&data=" +
+        encodeURIComponent(
+          JSON.stringify(data)
+        ) +
+        "&callback=" +
+        encodeURIComponent(
+          callbackName
+        );
+    
+    
+      document.body.appendChild(script);
+    
+    }
+    
+    
+    // =====================================================
+    // DELETE ADMIN
+    // =====================================================
+    
+    function deleteAdmin() {
+    
+      if (!currentAdminTahun) {
+    
+        alert("Sila pilih Tahun dahulu.");
+    
+        return;
+    
+      }
+    
+    
+      const confirmDelete =
+        confirm(
+          "Padam semua data Tahun " +
+          currentAdminTahun +
+          "?\n\nTindakan ini tidak boleh dibuat asal."
+        );
+    
+    
+      if (!confirmDelete) return;
+    
+    
+      const callbackName =
+        "adminDelete_" + Date.now();
+    
+    
+      const script =
+        document.createElement("script");
+    
+    
+      window[callbackName] = function(result) {
+    
+        if (result.success) {
+    
+          // Remove from browser data
+          allData =
+            allData.filter(
+              item =>
+                String(item.tahun).trim() !==
+                currentAdminTahun
+            );
+    
+    
+          document.getElementById(
+            "adminEditor"
+          ).style.display = "none";
+    
+    
+          currentAdminTahun = "";
+    
+    
+          // Refresh public dropdown
+          setupTahun();
+    
+    
+          // Reset public schedule
+          document.getElementById(
+            "schedule"
+          ).style.display = "none";
+    
+    
+          alert(
+            "🗑️ " +
+            result.message
+          );
+    
+        } else {
+    
+          alert(
+            "❌ " +
+            (result.message ||
+              "Gagal memadam.")
+          );
+    
+        }
+    
+    
+        script.remove();
+    
+        delete window[callbackName];
+    
+      };
+    
+    
+      script.onerror = function() {
+    
+        alert(
+          "❌ Gagal berhubung dengan Google Sheets."
+        );
+    
+        script.remove();
+    
+        delete window[callbackName];
+    
+      };
+    
+    
+      script.src =
+        API_URL +
+        "?action=delete" +
+        "&password=" +
+        encodeURIComponent("seriar26") +
+        "&tahun=" +
+        encodeURIComponent(
+          currentAdminTahun
+        ) +
+        "&callback=" +
+        encodeURIComponent(
+          callbackName
+        );
+    
+    
+      document.body.appendChild(script);
+    
+    }
 
 
   // ==========================================
@@ -899,6 +2002,23 @@
   loadData();
 
 </script>
+<!-- ADMIN SAVING LOADING -->
+<div id="adminSavingOverlay">
 
+  <div class="saving-card">
+
+    <div class="saving-spinner"></div>
+
+    <div class="saving-title">
+      Menyimpan...
+    </div>
+
+    <div class="saving-text">
+      Sedang mengemaskini data Google Sheets
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>
