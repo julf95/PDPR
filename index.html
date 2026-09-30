@@ -581,6 +581,28 @@
       color: #172033;
     }
     
+    /* YEAR REFERENCE IMAGE */
+
+    #tahunReference {
+      width: min(100%, 720px);
+      margin: 0 auto 14px;
+      display: none;
+      background: white;
+      border: 1px solid #e1e7ef;
+      border-radius: 18px;
+      padding: 8px;
+      box-shadow: 0 6px 20px rgba(20,40,70,.08);
+    }
+    
+    #tahunReference img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    
     
     /* ADMIN SECTION */
     
@@ -829,14 +851,23 @@
     
       </div>
     
-    
-      <!-- EDITOR -->
-    
-      <div id="adminEditor" style="display:none;">
-    
-        <div class="admin-edit-title" id="adminEditTitle">
-          Tahun 1
+            <!-- EDITOR -->
+        
+        <div id="adminEditor" style="display:none;">
+        
+          <div class="admin-edit-title" id="adminEditTitle">
+            Tahun 1
+          </div>
+      
+      
+      <!-- YEAR REFERENCE IMAGE -->
+
+        <div id="tahunReference">
+          <img id="tahunReferenceImage" src="" alt="Rujukan Tahun">
         </div>
+        
+        
+
     
     
         <!-- MATHURAT -->
@@ -871,7 +902,7 @@
         <div class="admin-section">
     
           <div class="admin-section-title">
-            📚 Subjek 1
+            📚 Subjek 1 (7.40-8.30am)
           </div>
     
           <label>Subjek</label>
@@ -906,7 +937,7 @@
         <div class="admin-section">
     
           <div class="admin-section-title">
-            📚 Subjek 2
+            📚 Subjek 2 (8.40-9.30am)
           </div>
     
           <label>Subjek</label>
@@ -941,7 +972,7 @@
         <div class="admin-section">
     
           <div class="admin-section-title">
-            📚 Subjek 3
+            📚 Subjek 3 (9.40-10.30am)
           </div>
     
           <label>Subjek</label>
@@ -976,7 +1007,7 @@
         <div class="admin-section">
     
           <div class="admin-section-title">
-            📚 Subjek 4
+            📚 Subjek 4 (10.40-11.30am)
           </div>
     
           <label>Subjek</label>
@@ -1364,6 +1395,41 @@
     function editTahun(tahun) {
     
       currentAdminTahun = tahun;
+      
+        // ================================================
+          // YEAR REFERENCE IMAGE
+          // ================================================
+        
+          const tahunImages = {
+            "1": "https://raw.githubusercontent.com/julf95/classroom/main/TAHUN%201.png",
+            "2": "https://raw.githubusercontent.com/julf95/classroom/main/TAHUN%202.png",
+            "3": "https://raw.githubusercontent.com/julf95/classroom/main/TAHUN%203.png",
+            "4": "https://raw.githubusercontent.com/julf95/classroom/main/TAHUN%204.png",
+            "5": "https://raw.githubusercontent.com/julf95/classroom/main/TAHUN%205.png"
+          };
+        
+          const referenceBox =
+            document.getElementById("tahunReference");
+        
+          const referenceImage =
+            document.getElementById("tahunReferenceImage");
+        
+          if (tahunImages[tahun]) {
+        
+            referenceImage.src = tahunImages[tahun];
+        
+            referenceImage.alt =
+              "Rujukan Jadual Tahun " + tahun;
+        
+            referenceBox.style.display = "block";
+        
+          } else {
+        
+            referenceImage.src = "";
+        
+            referenceBox.style.display = "none";
+        
+          }
     
       const row = allData.find(
         item =>
