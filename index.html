@@ -313,7 +313,16 @@
       inset: 0;
       z-index: 99999;
     
-      background: #e5e7eb;
+      background: linear-gradient(
+        120deg,
+        #0f766e,
+        #2563eb,
+        #7c3aed,
+        #0ea5e9,
+        #0f766e
+      );
+    
+      background-size: 300% 300%;
     
       display: flex;
       align-items: center;
@@ -321,7 +330,9 @@
     
       opacity: 1;
     
-      animation: introScreenFade 3s ease forwards;
+      animation:
+        movingGradient 8s ease infinite,
+        introScreenFade 3s ease forwards;
     
       pointer-events: all;
     }
