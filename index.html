@@ -2055,7 +2055,14 @@
 
     if (url && url.trim() !== "") {
 
-      button.href = url.trim();
+      let cleanUrl = url.trim();
+
+    // Automatically add https:// if missing
+    if (!/^https?:\/\//i.test(cleanUrl)) {
+      cleanUrl = "https://" + cleanUrl;
+    }
+
+    button.href = cleanUrl;
 
       button.classList.remove("disabled");
 
